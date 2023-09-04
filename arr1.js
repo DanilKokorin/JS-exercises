@@ -42,4 +42,46 @@ const getSpiraledFlatArray = (arr) => {
   return result;
 };
 
+function spiralTraversal(arr) {
+  const result = [];
+
+  let startRow = 0;
+  let endRow = arr.length - 1;
+  let startCol = 0;
+  let endCol = arr[0].length - 1;
+
+  while (startRow <= endRow && startCol <= endCol) {
+    // traverse right
+    for (let i = startCol; i <= endCol; i++) {
+      result.push(arr[startRow][i]);
+    }
+    startRow++;
+
+    // traverse down
+    for (let i = startRow; i <= endRow; i++) {
+        console.log(arr[i][endCol])
+      result.push(arr[i][endCol]);
+    }
+    endCol--;
+
+    // traverse left
+    if (startRow <= endRow) {
+      for (let i = endCol; i >= startCol; i--) {
+        result.push(arr[endRow][i]);
+      }
+      endRow--;
+    }
+
+    // traverse up
+    if (startCol <= endCol) {
+      for (let i = endRow; i >= startRow; i--) {
+        result.push(arr[i][startCol]);
+      }
+      startCol++;
+    }
+  }
+
+  return result;
+}
+
 getSpiraledFlatArray(arr1)
